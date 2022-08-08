@@ -1,17 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route,} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Routes/Home"
 import Detail from "./Routes/Detail"
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        <Route path = "/movie/:id" element={<Detail />} />
-        <Route path = "/" element = {<Home />} />
+        <Route
+          path="/movie/:id"
+          element={<Detail />}
+        />
+        <Route 
+          path= "/" 
+          element={<Home />} />
       </Routes>
-    </Router>
-  )
+    </BrowserRouter>
+  );
 }
 
 export default App;
