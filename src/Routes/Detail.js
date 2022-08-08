@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieDetail from "../Components/MovieDetail";
+import styles from "./Detail.module.css";
 
 function Detail() {
     const[loading, setLoading] = useState(true);
@@ -12,6 +13,7 @@ function Detail() {
         ).json();
         setLoading(false);
         setDetail(json.data.movie);
+        console.log(json.data.movie);
     };
     let nowUrl = window.location.pathname;
 
@@ -20,8 +22,8 @@ function Detail() {
         getMovie();
     },[nowUrl]);
     return loading ? (
-      <div>
-        <h1>Loading...</h1>
+      <div className={styles.loader}>
+        <span>Loading...</span>
       </div>
     ) : (
       <MovieDetail

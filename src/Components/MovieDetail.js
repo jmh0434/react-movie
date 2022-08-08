@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from "./MovieDetail.module.css";
 
 function MovieDetail({ url, year, rating, coverImg, title, summary, genres  }) {
   return (
@@ -8,9 +9,13 @@ function MovieDetail({ url, year, rating, coverImg, title, summary, genres  }) {
       <p>
         year: {year} rating: {rating}
       </p>
-      <img src={coverImg} alt={title}></img>
+      <img className = {styles.movie__img} src={coverImg} alt={title}></img>
       <p>{summary}</p>
-    
+      <ul>
+        {genres.map((genre) => (
+          <li key={genre}>{genre}</li>
+        ))}
+      </ul>
     </div>
   );
 }
